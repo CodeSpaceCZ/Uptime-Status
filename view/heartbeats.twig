@@ -1,0 +1,11 @@
+<div class="heartbeats">
+	<div class="items">
+		{% for heartbeat in heartbeats %}
+			<div class="status-{{ heartbeat.status }}"></div>
+		{% endfor %}	
+	</div>
+	<div class="time">
+		<div>{{ (heartbeats | first).time | timeago((heartbeats | last).time) }}</div>
+		<div>now</div>
+	</div>
+</div>

@@ -29,13 +29,19 @@ h3, h4 {
 
 .group .item {
 	overflow: hidden;
-	margin: 5px 0;
 	border-radius: var(--border-radius);
 }
 
 .group .item:hover {
 	background-color: #fff1;
 }
+
+:is(.group, .item) > .inner {
+	margin: 10px;
+}
+
+
+/* MONITOR */
 
 .monitor {
 	--color: #fff2;
@@ -54,26 +60,56 @@ h3, h4 {
 	grid-template-columns: 22px 1fr max-content;
 }
 
-.monitor .heartbeats {
+.monitor .icon {
+	color: var(--color);
+	display: flex;
+}
+
+.monitor .uptime {
+	font-size: .9rem;
+	color: var(--color);
+}
+
+
+/* HEARTBEATS */
+
+.heartbeats {
+	display: flex;
+	gap: 5px;
+	flex-direction: column;
+}
+
+.heartbeats .items {
 	display: flex;
 	gap: 2px;
 	border-radius: var(--border-radius);
 	overflow: hidden;
 	height: 5px;
-	transition: all .3s;
+	transition: all .3s .5s;
 	opacity: .4;
 }
 
-.monitor:hover .heartbeats {
-	height: 25px;
-	opacity: 1;
-}
-
-.monitor .heartbeats > * {
+.heartbeats .items > * {
 	flex: 1;
 	background-color: var(--color);
 	border-radius: var(--border-radius);
 }
+
+.heartbeats .time {
+	display: flex;
+	justify-content: space-between;
+	font-size: .9rem;
+	opacity: .5;
+	line-height: 1;
+}
+
+.monitor:hover .heartbeats .items {
+	height: 25px;
+	opacity: 1;
+}
+
+
+/* STATUS COLORS */
 
 .monitor.status-1, .monitor .heartbeats .status-1 {
 	--color: var(--green-color);
@@ -85,18 +121,4 @@ h3, h4 {
 
 .monitor.status-2, .monitor .heartbeats .status-2 {
 	--color: var(--red-color);
-}
-
-:is(.group, .item) > .inner {
-	margin: 10px;
-}
-
-.monitor .icon {
-	color: var(--color);
-	display: flex;
-}
-
-.monitor .uptime {
-	font-size: .9rem;
-	color: var(--color);
 }

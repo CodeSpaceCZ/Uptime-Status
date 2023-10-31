@@ -19,10 +19,8 @@
 				<b>{{ (attribute(uptimeList, "#{monitor.id}_24") * 100) | number_format(1, '.') }}%</b> uptime
 			</div>
 		</header>
-		<div class="heartbeats">
-			{% for heartbeat in heartbeats %}
-				<div class="status-{{ heartbeat.status }}"></div>
-			{% endfor %}	
-		</div>
+		{% if monitoring[monitor.id].rich %}
+			{{ include('./heartbeats.twig') }}
+		{% endif %}
 	</div>
 </div>
