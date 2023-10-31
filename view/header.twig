@@ -1,0 +1,20 @@
+<header class="{{ online | isof(total) }}">
+	<div class="inner">
+		{% if online == total %}
+
+			{{ include("./icon/success.svg") }}
+			<h1>All services are online</h1>
+
+		{% elseif online == 0 %}
+
+			{{ include("./icon/error.svg") }}
+			<h1>All services are down</h1>
+
+		{% else %}
+
+			{{ include("./icon/warning.svg") }}
+			<h1>Some services are down</h1>
+
+		{% endif %}
+	</div>
+</header>

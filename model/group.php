@@ -17,12 +17,12 @@ class Group {
 		if($monitor->is_online()) $this->online++;
 	}
 
-	public static function convert(array $oldGroup, array $heartbeat): Group {
-		$group = new Group($oldGroup["name"]);
-		foreach ($oldGroup["monitorList"] as $oldMonitor) {
-			$group->add_monitor(Monitor::convert($oldMonitor, $heartbeat));
-		}
-		return $group;
+	public function get_online(): int {
+		return $this->online;
+	}
+
+	public function get_total(): int {
+		return count($this->monitors);
 	}
 
 	public function export(): array {
@@ -35,6 +35,14 @@ class Group {
 			"online" => $this->online,
 			"monitors" => $monitors
 		];
+	}
+
+	public static function convert(array $oldGroup, array $heartbeat): Group {
+		$group = new Group($oldGroup["name"]);
+		foreach ($oldGroup["monitorList"] as $oldMonitor) {
+			$group->add_monitor(Monitor::convert($oldMonitor, $heartbeat));
+		}
+		return $group;
 	}
 
 }

@@ -20,6 +20,16 @@ class Monitor {
 		return $this->last["status"] == 1;
 	}
 
+	public function export(): array {
+		return [
+			"name" => $this->name,
+			"uptime" => $this->uptime,
+			"last" => $this->last,
+			"heartbeats" => $this->heartbeats,
+			"opt" => $this->opt
+		];
+	}
+
 	public static function convert(array $oldMonitor, array $heartbeat): Monitor {
 
 		$id = $oldMonitor["id"];
@@ -32,16 +42,6 @@ class Monitor {
 			$heartbeat["heartbeatList"][$id],
 			$opt
 		);
-	}
-
-	public function export(): array {
-		return [
-			"name" => $this->name,
-			"uptime" => $this->uptime,
-			"last" => $this->last,
-			"heartbeats" => $this->heartbeats,
-			"opt" => $this->opt
-		];
 	}
 
 }

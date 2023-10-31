@@ -27,3 +27,11 @@ function timeago() {
 
 	});	
 }
+
+function isof() {
+	return new \Twig\TwigFilter('isof', function ($online, $total) {
+		if($online == $total) return "all";
+		elseif($online == 0) return "none";
+		else return "some";
+	});
+}
