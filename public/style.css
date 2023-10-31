@@ -1,20 +1,40 @@
 :root {
+
 	--border-radius: .35rem;
-	--green-color: #10b981;
-	--red-color: #f87171;
-	--yellow-color: #ffdd6d;
+
+	--title-color: #fff;
+	--text-color: #fff9;
+	--bg-color: #0f121a;
+
+	--card-bg-color: #23273191;
+	--card-border-color: #21242d;
+
+	--green-color: 16, 185, 129;
+	--red-color: 248, 113, 113;
+	--yellow-color: 255, 187, 109;
+
 }
 
 body {
-	color: #fff;
-	background-color: #0f121a;
+	color: var(--text-color);
+	background-color: var(--bg-color);
 	font-family: Cantarell, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	margin: 0;
+	line-height: 1.15;
+}
+
+* {
+	box-sizing: border-box;
 }
 
 :is(header, section) > .inner {
 	max-width: 750px;
 	margin: auto;
+	padding: 0 10px;
+}
+
+h1, h2, h3, h4 {
+	color: var(--title-color);
 }
 
 h3, h4 {
@@ -38,9 +58,8 @@ header::after {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
-	background-image: radial-gradient(circle at 50% 0, var(--color) 0, transparent 400px);
-	opacity: .1;
+	height: 450px;
+	background-image: radial-gradient(circle at 50% 0, rgb(var(--color), .2) 0, transparent 400px);
 	z-index: -1;
 }
 
@@ -56,20 +75,29 @@ header.none {
 	--color: var(--red-color);
 }
 
-header svg {
-	color: var(--color);
+header .icon {
+	color: rgb(var(--color));
+	border-radius: 50%;
+	max-width: 50px;
+	padding: 5px;
+	margin: auto;
+	position: relative;
+	display: flex;
+	background-image: linear-gradient(-45deg, rgb(var(--color), .1) 0%, rgb(var(--color), .5) 100%);
 }
 
-header svg {
-	max-width: 50px;
+header .icon svg {
+	filter: drop-shadow(0 0 10px var(--bg-color));
 }
+
+header p {font-size: .9rem;}
 
 
 /* GROUP */
 
 .group {
-	background: #191c24;
-	border: 1px solid rgb(33 36 45);
+	background: var(--card-bg-color);
+	border: 1px solid var(--card-border-color);
 	margin: 10px 0;
 	padding: 10px;
 	border-radius: var(--border-radius);
@@ -95,14 +123,14 @@ header svg {
 }
 
 .group > .header .status {
-	opacity: .4;
+	opacity: .7;
 }
 
 
 /* MONITOR */
 
 .monitor {
-	--color: #fff2;
+	--color: 150, 150, 150;
 }
 
 .monitor > .inner {
@@ -119,13 +147,13 @@ header svg {
 }
 
 .monitor .icon {
-	color: var(--color);
+	color: rgb(var(--color));
 	display: flex;
 }
 
 .monitor .uptime {
 	font-size: .9rem;
-	color: var(--color);
+	color: rgb(var(--color));
 }
 
 
@@ -149,7 +177,7 @@ header svg {
 
 .heartbeats .items > * {
 	flex: 1;
-	background-color: var(--color);
+	background-color: rgb(var(--color));
 	border-radius: var(--border-radius);
 }
 
@@ -157,7 +185,7 @@ header svg {
 	display: flex;
 	justify-content: space-between;
 	font-size: .9rem;
-	opacity: .5;
+	opacity: .7;
 	line-height: 1;
 }
 
@@ -178,5 +206,5 @@ header svg {
 }
 
 .monitor.status-2, .monitor .heartbeats .status-2 {
-	--color: var(--red-color);
+	--color: var(--yellow-color);
 }

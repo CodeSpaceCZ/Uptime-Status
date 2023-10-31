@@ -2,19 +2,22 @@
 	<div class="inner">
 		{% if online == total %}
 
-			{{ include("./icon/success.svg") }}
+			<div class="icon">{{ include("./icon/success.svg") }}</div>
 			<h1>All services are online</h1>
 
 		{% elseif online == 0 %}
 
-			{{ include("./icon/error.svg") }}
+			<div class="icon">{{ include("./icon/error.svg") }}</div>
 			<h1>All services are down</h1>
 
 		{% else %}
 
-			{{ include("./icon/warning.svg") }}
+			<div class="icon">{{ include("./icon/warning.svg") }}</div>
 			<h1>Some services are down</h1>
 
 		{% endif %}
+		<p>
+			Last updated on {{ now | date(date_format, timezone) }}.
+		</p>
 	</div>
 </header>
