@@ -3,15 +3,18 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ config.title }}</title>
+		<title>{{ page.title }}</title>
 		<link rel="stylesheet" href="/style.css">
+		<link rel="icon" href="/icon.png" type="image/png">
 	</head>
 	<body>
 		<section>
-			<h1>{{ config.title }}</h1>
-			{% for group in publicGroupList %}
-				{{ include('./group.twig') }}
-			{% endfor %}
+			<div class="inner">
+				<h1>{{ page.title }}</h1>
+				{% for group in groups %}
+					{{ include('./group.twig') }}
+				{% endfor %}
+			</div>
 		</section>
 	</body>
 </html>

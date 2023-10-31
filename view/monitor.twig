@@ -1,8 +1,7 @@
-{% set heartbeats = heartbeatList[monitor.id] %}
-{% set status = (heartbeats|last).status %}
+{% set status = monitor.last.status %}
 <div class="item monitor status-{{ status }}">
 	<div class="inner">
-		<header>
+		<div class="header">
 			<div class="icon">
 				{% if status == 0 %}
 					{{ include("./icon/error.svg") }}
@@ -16,10 +15,10 @@
 				{{ monitor.name }}
 			</h4>
 			<div class="uptime">
-				<b>{{ (attribute(uptimeList, "#{monitor.id}_24") * 100) | number_format(1, '.') }}%</b> uptime
+				<b>{{ (monitor.uptime * 100) | number_format(1, '.') }}%</b> uptime
 			</div>
-		</header>
-		{% if monitoring[monitor.id].rich %}
+		</div>
+		{% if monitor.opt.rich %}
 			{{ include('./heartbeats.twig') }}
 		{% endif %}
 	</div>
