@@ -1,0 +1,28 @@
+{% set heartbeats = heartbeatList[monitor.id] %}
+{% set status = (heartbeats|last).status %}
+<div class="item monitor status-{{ status }}">
+	<div class="inner">
+		<header>
+			<div class="icon">
+				{% if status == 0 %}
+					{{ include("./icon/error.svg") }}
+				{% elseif status == 1 %}
+					{{ include("./icon/success.svg") }}
+				{% elseif status == 2 %}
+					{{ include("./icon/warning.svg") }}
+				{% endif %}
+			</div>
+			<h4>
+				{{ monitor.name }}
+			</h4>
+			<div class="uptime">
+				<b>{{ (attribute(uptimeList, "#{monitor.id}_24") * 100) | number_format(1, '.') }}%</b> uptime
+			</div>
+		</header>
+		<div class="heartbeats">
+			{% for heartbeat in heartbeats %}
+				<div class="status-{{ heartbeat.status }}"></div>
+			{% endfor %}	
+		</div>
+	</div>
+</div>

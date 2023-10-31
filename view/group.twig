@@ -1,0 +1,12 @@
+<div class="group">
+	<div class="inner">
+		<header class="item">
+			<div class="inner">
+				<h3>{{ group.name }}</h3>
+			</div>
+		</header>
+		{% for monitor in group.monitorList %}
+			{{ include("./monitor.twig") }}
+		{% endfor %}
+	</div>
+</div>

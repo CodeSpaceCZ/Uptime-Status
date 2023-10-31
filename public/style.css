@@ -1,0 +1,102 @@
+:root {
+	--border-radius: .35rem;
+	--green-color: #10b981;
+	--red-color: #f87171;
+	--yellow-color: #ffdd6d;
+}
+
+body {
+	color: #fff;
+	background-color: #0f121a;
+	font-family: Cantarell, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+section {
+	max-width: 750px;
+	margin: auto;
+}
+
+.group {
+	background: #191c24;
+	border: 1px solid rgb(33 36 45);
+	margin: 10px 0;
+	border-radius: var(--border-radius);
+}
+
+h3, h4 {
+	margin: 0;
+}
+
+.group .item {
+	overflow: hidden;
+	margin: 5px 0;
+	border-radius: var(--border-radius);
+}
+
+.group .item:hover {
+	background-color: #fff1;
+}
+
+.monitor {
+	--color: #fff2;
+}
+
+.monitor > .inner {
+	display: flex;
+	gap: 7px;
+	flex-direction: column;
+}
+
+.monitor header {
+	display: grid;
+	align-items: center;
+	gap: 10px;
+	grid-template-columns: 22px 1fr max-content;
+}
+
+.monitor .heartbeats {
+	display: flex;
+	gap: 2px;
+	border-radius: var(--border-radius);
+	overflow: hidden;
+	height: 5px;
+	transition: all .3s;
+	opacity: .4;
+}
+
+.monitor:hover .heartbeats {
+	height: 25px;
+	opacity: 1;
+}
+
+.monitor .heartbeats > * {
+	flex: 1;
+	background-color: var(--color);
+	border-radius: var(--border-radius);
+}
+
+.monitor.status-1, .monitor .heartbeats .status-1 {
+	--color: var(--green-color);
+}
+
+.monitor.status-0, .monitor .heartbeats .status-0 {
+	--color: var(--red-color);
+}
+
+.monitor.status-2, .monitor .heartbeats .status-2 {
+	--color: var(--red-color);
+}
+
+:is(.group, .item) > .inner {
+	margin: 10px;
+}
+
+.monitor .icon {
+	color: var(--color);
+	display: flex;
+}
+
+.monitor .uptime {
+	font-size: .9rem;
+	color: var(--color);
+}
