@@ -1,6 +1,5 @@
 <?php
 
-
 require("../config.inc.php");
 require("../controller/status.php");
 
