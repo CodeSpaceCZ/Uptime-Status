@@ -24,15 +24,11 @@ class Page {
 	}
 
 	public function export(): array {
-		$groups = [];
-		foreach($this->groups as $group) {
-			array_push($groups, $group->export());
-		}
 		return [
 			"page" => $this->page,
 			"online" => $this->online,
 			"total" => $this->total,
-			"groups" => $groups,
+			"groups" => $this->groups,
 			"date_format" => $this->date_format,
 			"timezone" => $this->timezone
 		];

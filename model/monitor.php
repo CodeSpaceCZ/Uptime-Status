@@ -2,11 +2,11 @@
 
 class Monitor {
 
-	private string $name;
-	private float $uptime;
-	private array $last;
-	private array $heartbeats;
-	private array $opt;
+	public string $name;
+	public float $uptime;
+	public array $last;
+	public array $heartbeats;
+	public array $opt;
 
 	public function __construct(string $name, float $uptime, array $heartbeats, array $opt = []) {
 		$this->name = $name;
@@ -18,16 +18,6 @@ class Monitor {
 
 	public function is_online() {
 		return $this->last["status"] == 1;
-	}
-
-	public function export(): array {
-		return [
-			"name" => $this->name,
-			"uptime" => $this->uptime,
-			"last" => $this->last,
-			"heartbeats" => $this->heartbeats,
-			"opt" => $this->opt
-		];
 	}
 
 	public static function convert(array $oldMonitor, array $heartbeat): Monitor {

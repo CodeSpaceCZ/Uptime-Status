@@ -90,7 +90,9 @@ header .icon svg {
 	filter: drop-shadow(0 0 10px var(--bg-color));
 }
 
-header p {font-size: .9rem;}
+header p {
+	font-size: .9rem;
+}
 
 
 /* GROUP */

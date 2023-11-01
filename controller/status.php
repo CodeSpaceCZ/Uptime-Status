@@ -6,7 +6,7 @@ require_once(__DIR__ . "/filters.php");
 
 class UptimeStatus {
 
-	private $data;
+	private array $data;
 
 	public function load_data() {
 		$page = json_decode(file_get_contents(UPTIME_KUMA_URL . "/api/status-page/" . UPTIME_KUMA_PAGE), true);
