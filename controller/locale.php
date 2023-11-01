@@ -6,11 +6,12 @@ class Locale {
 
 	public function __construct(string $defaultLang) {
 
-		$lang = explode(";", $_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
-		$languages = array_merge([$defaultLang], array_reverse(explode(",", $lang)));
+		$this->load_lang($defaultLang);
 
-		foreach ($languages as $lang) {
-			$this->load_lang($lang);
+		$lang = explode(";", $_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
+
+		foreach (array_reverse(explode(",", $lang)) as $l) {
+			$this->load_lang(substr($l, 0, 2));
 		}
 
 	}
