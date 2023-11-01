@@ -5,7 +5,7 @@
 		{% endfor %}	
 	</div>
 	<div class="time">
-		<div>{{ (monitor.heartbeats | first).time | timeago((monitor.heartbeats | last).time) }}</div>
+		<div>{{ (monitor.heartbeats | first).time | timediffmin((monitor.heartbeats | last).time) }} min</div>
 		<div>now</div>
 	</div>
 </div>

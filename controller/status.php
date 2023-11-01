@@ -25,7 +25,7 @@ class UptimeStatus {
 		
 		$loader = new \Twig\Loader\FilesystemLoader("../view/");
 		$twig = new \Twig\Environment($loader, $twig_config);
-		$twig->addFilter(\Filters\timeago());
+		$twig->addFilter(\Filters\timediffmin());
 		$twig->addFilter(\Filters\isof());
 
 		echo $twig->render('index.twig', $this->data);
