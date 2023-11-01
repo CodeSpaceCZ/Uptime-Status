@@ -3,7 +3,7 @@
 define("UPTIME_KUMA_URL", "http://uptime-kuma.local:3001");
 define("UPTIME_KUMA_PAGE", "public");
 
-define("ENABLE_TWIG_CACHE", false);
+define("ENABLE_TWIG_CACHE", true);
 
 define("TIMEZONE", "Etc/UTC");
 define("DEFAULT_LANGUAGE", "en");

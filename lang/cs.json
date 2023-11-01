@@ -6,5 +6,6 @@
 	"heartbeats.now": "nyní",
 	"heartbeats.ago": "před {{minutes}} minutami",
 	"monitor.uptime": "<b>{{pct}}%</b> uptime",
-	"dateformat": "j. m. Y G:i"
+	"dateformat": "j. m. Y G:i",
+	"footer.poweredby": "Poháněno projektem <b><a href=\"{{link}}\" target=\"_blank\">Uptime Status</a></b>"
 }

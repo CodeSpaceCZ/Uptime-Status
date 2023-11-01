@@ -8,13 +8,14 @@
 		<link rel="icon" href="/icon.webp" type="image/webp">
 	</head>
 	<body>
-		{{ include('./header.twig') }}
+		{{ include("./header.twig") }}
 		<section>
 			<div class="inner">
 				{% for group in groups %}
-					{{ include('./group.twig') }}
+					{{ include("./group.twig") }}
 				{% endfor %}
 			</div>
 		</section>
+		{{ include("./footer.twig") }}
 	</body>
 </html>

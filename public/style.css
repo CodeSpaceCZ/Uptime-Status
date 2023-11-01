@@ -27,9 +27,9 @@ body {
 	box-sizing: border-box;
 }
 
-:is(header, section) > .inner {
+:is(header, section, footer) > .inner {
 	max-width: 750px;
-	margin: auto;
+	margin: 40px auto;
 	padding: 0 10px;
 }
 
@@ -39,6 +39,14 @@ h1, h2, h3, h4 {
 
 h3, h4 {
 	margin: 0;
+}
+
+a {
+	color: var(--text-color);
+}
+
+a:hover {
+	color: var(--title-color);
 }
 
 
@@ -92,6 +100,13 @@ header .icon svg {
 
 header p {
 	font-size: .9rem;
+}
+
+
+/* FOOTER */
+
+footer {
+	text-align: center;
 }
 
 

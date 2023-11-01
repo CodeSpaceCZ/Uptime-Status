@@ -2,4 +2,4 @@
 
 # Uptime Status
 
-An alternative public status page for **[Uptime Kuma](https://uptime.kuma.pet/)**.
+Alternative public status page for **[Uptime Kuma](https://uptime.kuma.pet/)**.
