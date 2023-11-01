@@ -1,0 +1,10 @@
+{
+	"header.title.all": "All services are online",
+	"header.title.some": "Some services are down",
+	"header.title.none": "All services are down",
+	"header.updated": "Last updated on {{date}}.",
+	"heartbeats.now": "now",
+	"heartbeats.ago": "{{minutes}} minutes ago",
+	"monitor.uptime": "<b>{{pct}}%</b> uptime",
+	"dateformat": "M j, Y, g:i a"
+}

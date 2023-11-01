@@ -15,7 +15,7 @@
 				{{ monitor.name }}
 			</h4>
 			<div class="uptime">
-				<b>{{ (monitor.uptime * 100) | number_format(1, '.') }}%</b> uptime
+				{{ "monitor.uptime" | t({pct: (monitor.uptime * 100) | number_format(1, '.')}) | raw }}
 			</div>
 		</div>
 		{% if monitor.opt.rich %}

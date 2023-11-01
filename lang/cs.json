@@ -1,0 +1,10 @@
+{
+	"header.title.all": "Všechny služby běží",
+	"header.title.some": "Některé služby neběží",
+	"header.title.none": "Všechny služby jsou offline",
+	"header.updated": "Poslední aktualizace {{date}}.",
+	"heartbeats.now": "nyní",
+	"heartbeats.ago": "před {{minutes}} minutami",
+	"monitor.uptime": "<b>{{pct}}%</b> uptime",
+	"dateformat": "j. m. Y G:i"
+}
