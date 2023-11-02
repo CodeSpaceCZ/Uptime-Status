@@ -25,10 +25,10 @@ class Group {
 		return count($this->monitors);
 	}
 
-	public static function convert(array $oldGroup, array $heartbeat): Group {
+	public static function convert(UptimeStatus $s, array $oldGroup, array $heartbeat): Group {
 		$group = new Group($oldGroup["name"]);
 		foreach ($oldGroup["monitorList"] as $oldMonitor) {
-			$group->add_monitor(Monitor::convert($oldMonitor, $heartbeat));
+			$group->add_monitor(Monitor::convert($s, $oldMonitor, $heartbeat));
 		}
 		return $group;
 	}

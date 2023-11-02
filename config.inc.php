@@ -1,13 +1,16 @@
 <?php
 
-define("UPTIME_KUMA_URL", "http://uptime-kuma.local:3001");
-define("UPTIME_KUMA_PAGE", "public");
+$config = [
+	"uptime_kuma_url" => "http://uptime-kuma.local:3001",
+	"pages" => [
+		"public",
+		"second"
+	],
+	"monitor_options" => [
+		4 => ["rich" => true]
+	],
+	"enable_twig_cache" => true,
+	"default_language" => "en",
+	"timezone" => "Etc/UTC"
+];
 
-define("ENABLE_TWIG_CACHE", true);
-
-define("TIMEZONE", "Etc/UTC");
-define("DEFAULT_LANGUAGE", "en");
-
-define("MONITOR_OPTIONS", [
-	4 => ["rich" => true]
-]);

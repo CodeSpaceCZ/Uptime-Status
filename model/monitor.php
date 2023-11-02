@@ -20,11 +20,11 @@ class Monitor {
 		return $this->last["status"] == 1;
 	}
 
-	public static function convert(array $oldMonitor, array $heartbeat): Monitor {
+	public static function convert(UptimeStatus $s, array $oldMonitor, array $heartbeat): Monitor {
 
 		$id = $oldMonitor["id"];
-		if(!MONITOR_OPTIONS) define("MONITOR_OPTIONS", []);
-		$opt = MONITOR_OPTIONS[$id] ?? [];
+		$opts = $s->cfg("monitor_options") ?? [];
+		$opt = $opts[$id] ?? [];
 
 		return new Monitor(
 			$oldMonitor["name"],

@@ -7,49 +7,29 @@ require_once(__DIR__ . "/locale.php");
 
 class UptimeStatus {
 
-	private array $data;
+	private array $config;
 
-	public function load_data() {
-
-		$urls = [
-			UPTIME_KUMA_URL . "/api/status-page/" . UPTIME_KUMA_PAGE,
-			UPTIME_KUMA_URL . "/api/status-page/heartbeat/" . UPTIME_KUMA_PAGE
-		];
-		$arr = $this->download($urls);
-		$this->data = Page::convert($arr[0], $arr[1])->export();
+	public function __construct(array $config) {
+		$this->config = $config;
 	}
 
-	private function download(array $urls): array {
-		$chs = []; $data = [];
-		$mh = curl_multi_init();
-		foreach ($urls as $url) {
-			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch, CURLOPT_HEADER, 0);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_multi_add_handle($mh, $ch);
-			array_push($chs, $ch);
+	public function cfg($name) {
+		if(array_key_exists($name, $this->config)) {
+			return $this->config[$name];
 		}
-		do {
-			$status = curl_multi_exec($mh, $active);
-			if ($active) curl_multi_select($mh);
-		} while ($active && $status == CURLM_OK);
-		foreach ($chs as $ch) {
-			array_push($data, json_decode(curl_multi_getcontent($ch), true));
-			curl_multi_remove_handle($mh, $ch);
-		}
-		curl_multi_close($mh);
-		return $data;
+		return null;
 	}
 
-	public function raw() {
-		return $this->data;
+	public function get_page(string $page): ?Page {
+		return Page::get($this, $page);
 	}
 
-	public function display() {
+	public function display(Page $page) {
+
+		$data = $page->export();
 
 		$twig_config = [];
-		if (ENABLE_TWIG_CACHE) $twig_config["cache"] = "../cache/twig/";
+		if ($this->cfg("enable_twig_cache")) $twig_config["cache"] = "../cache/twig/";
 
 		$loader = new \Twig\Loader\FilesystemLoader("../view/");
 		$twig = new \Twig\Environment($loader, $twig_config);
@@ -57,14 +37,14 @@ class UptimeStatus {
 		$twig->addFilter(\Filters\timediffmin());
 		$twig->addFilter(\Filters\isof());
 
-		$locale = new \Locale\Locale(DEFAULT_LANGUAGE);
+		$locale = new \Locale\Locale($this->cfg("default_language"));
 		$twig->addFilter($locale->t());
 
 		$ext = $twig->getExtension(\Twig\Extension\CoreExtension::class);
 		$ext->setDateFormat($locale->get("dateformat"));
-		$ext->setTimezone(TIMEZONE);
+		$ext->setTimezone($this->cfg("timezone"));
 
-		echo $twig->render('index.twig', $this->data);
+		echo $twig->render('index.twig', $data);
 
 	}
 
