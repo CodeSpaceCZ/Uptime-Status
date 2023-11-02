@@ -1,8 +1,8 @@
-{% set gs = online | globalstatus(total) %}
+{% set gs = stats | globalstatus(total) %}
 <header class="status-{{ gs }}">
 	<div class="inner">
 		<img class="icon" src="{{ gs | statusicon }}" />
-		<h1>{{ gs | globalstatustext | t }}</h1>
+		<h1>{{ ("header.title." ~ gs) | t }}</h1>
 		<p>{{ "header.updated" | t({date: now | date}) }}</p>
 	</div>
 </header>

@@ -16,8 +16,8 @@ class Monitor {
 		$this->opt = $opt;
 	}
 
-	public function is_online() {
-		return $this->last["status"] == 1;
+	public function get_status() {
+		return $this->last["status"] ?? 0;
 	}
 
 	public static function convert(UptimeStatus $s, array $oldMonitor, array $heartbeat): Monitor {

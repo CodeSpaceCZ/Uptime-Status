@@ -1,7 +1,7 @@
 <div class="group">
 	<div class="header item">
 		<h3>{{ group.name }}</h3>
-		<div class="status">{{ group.online }} / {{ group.monitors | length }}</div>
+		<div class="status">{{ group.stats[1] + group.stats[3] }} / {{ group.monitors | length }}</div>
 	</div>
 	{% for monitor in group.monitors %}
 		{{ include("./monitor.twig") }}

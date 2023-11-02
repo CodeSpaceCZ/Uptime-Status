@@ -11,7 +11,7 @@
 					</div>
 					{% if heartbeat.ping %}
 					<div>
-						Ping: {{ heartbeat.ping }}ms
+						{{ "heartbeat.ping" | t({ping: heartbeat.ping}) }}
 					</div>
 					{% endif %}
 				</div>

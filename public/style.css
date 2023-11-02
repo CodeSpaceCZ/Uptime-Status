@@ -12,6 +12,7 @@
 	--green-color: 16, 185, 129;
 	--red-color: 248, 113, 113;
 	--yellow-color: 255, 187, 109;
+	--blue-color: 149, 117, 205;
 
 }
 
@@ -171,15 +172,14 @@ footer {
 	z-index: 10;
 	background-color: rgb(var(--card-bg-color));
 	border-radius: var(--border-radius);
-	border: 1px solid rgb(var(--card-border-color));
 	top: 100%;
 	left: 50%;
-	margin-top: 5px;
-	margin-left: -90px;
 	width: 180px;
 	box-shadow: 0 0 10px 0 #0005;
 	opacity: 0;
 	pointer-events: none;
+	overflow: hidden;
+	transform: translate(-50%, 5px);
 }
 
 .heartbeats .tooltip > * {
@@ -253,4 +253,8 @@ footer {
 
 .status-2 {
 	--color: var(--yellow-color);
+}
+
+.status-3 {
+	--color: var(--blue-color);
 }

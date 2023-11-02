@@ -3,21 +3,11 @@
 require_once("../vendor/autoload.php");
 
 function globalstatus() {
-	return new \Twig\TwigFilter('globalstatus', function (int $online, int $total) {
-		if ($online == $total) return 1;
-		elseif ($online == 0) return 0;
-		else return 2;
-	});
-}
-
-function globalstatustext() {
-	return new \Twig\TwigFilter('globalstatustext', function (int $status) {
-		$msgs = [
-			"none",
-			"all",
-			"some"
-		];
-		return "header.title.$msgs[$status]";
+	return new \Twig\TwigFilter('globalstatus', function (array $stats, int $total) {
+		if ($stats[3] > 0) return 3;
+		if ($stats[1] == $total) return 1;
+		if ($stats[1] == 0) return 0;
+		return 2;
 	});
 }
 

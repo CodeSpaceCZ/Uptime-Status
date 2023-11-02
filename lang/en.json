@@ -1,13 +1,15 @@
 {
-	"header.title.all": "All services are online",
-	"header.title.some": "Some services are down",
-	"header.title.none": "All services are down",
+	"header.title.1": "All services are online",
+	"header.title.0": "All services are down",
+	"header.title.2": "Some services are down",
+	"header.title.3": "Under Maintenance",
 	"header.updated": "Last updated on {{date}}.",
 	"monitor.uptime": "<b>{{pct}}%</b> uptime",
 	"status.1": "Operational",
 	"status.0": "Downtime",
 	"status.2": "Problem",
 	"status.3": "Maintenance",
+	"heartbeat.ping": "Ping: {{ping}}ms",
 	"dateformat": "M j, Y, g:i a",
 	"footer.poweredby": "Powered by <b><a href=\"{{link}}\" target=\"_blank\">Uptime Status</a></b>"
 }

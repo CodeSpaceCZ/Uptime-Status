@@ -1,13 +1,15 @@
 {
-	"header.title.all": "Všechny služby běží",
-	"header.title.some": "Některé služby neběží",
-	"header.title.none": "Všechny služby jsou offline",
+	"header.title.1": "Všechny služby běží",
+	"header.title.0": "Všechny služby jsou offline",
+	"header.title.2": "Některé služby neběží",
+	"header.title.3": "Právě probíhá údržba",
 	"header.updated": "Poslední aktualizace {{date}}.",
 	"monitor.uptime": "<b>{{pct}}%</b> uptime",
 	"status.1": "V pořádku",
 	"status.0": "Výpadek",
 	"status.2": "Problém",
 	"status.3": "Údržba",
+	"heartbeat.ping": "Odezva: {{ping}}ms",
 	"dateformat": "j. m. Y G:i",
 	"footer.poweredby": "Poháněno projektem <b><a href=\"{{link}}\" target=\"_blank\">Uptime Status</a></b>"
 }
