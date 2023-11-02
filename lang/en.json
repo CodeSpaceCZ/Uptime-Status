@@ -3,9 +3,10 @@
 	"header.title.some": "Some services are down",
 	"header.title.none": "All services are down",
 	"header.updated": "Last updated on {{date}}.",
-	"heartbeats.now": "now",
-	"heartbeats.ago": "{{minutes}} minutes ago",
 	"monitor.uptime": "<b>{{pct}}%</b> uptime",
+	"status.1": "Operational",
+	"status.0": "Downtime",
+	"status.2": "Problem",
 	"dateformat": "M j, Y, g:i a",
 	"footer.poweredby": "Powered by <b><a href=\"{{link}}\" target=\"_blank\">Uptime Status</a></b>"
 }

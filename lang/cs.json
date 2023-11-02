@@ -3,9 +3,10 @@
 	"header.title.some": "Některé služby neběží",
 	"header.title.none": "Všechny služby jsou offline",
 	"header.updated": "Poslední aktualizace {{date}}.",
-	"heartbeats.now": "nyní",
-	"heartbeats.ago": "před {{minutes}} minutami",
 	"monitor.uptime": "<b>{{pct}}%</b> uptime",
+	"status.1": "V pořádku",
+	"status.0": "Výpadek",
+	"status.2": "Problém",
 	"dateformat": "j. m. Y G:i",
 	"footer.poweredby": "Poháněno projektem <b><a href=\"{{link}}\" target=\"_blank\">Uptime Status</a></b>"
 }

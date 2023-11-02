@@ -1,23 +1,8 @@
-<header class="{{ online | isof(total) }}">
+{% set gs = online | globalstatus(total) %}
+<header class="status-{{ gs }}">
 	<div class="inner">
-		{% if online == total %}
-
-			<div class="icon">{{ include("./icon/success.svg") }}</div>
-			<h1>{{ "header.title.all" | t }}</h1>
-
-		{% elseif online == 0 %}
-
-			<div class="icon">{{ include("./icon/error.svg") }}</div>
-			<h1>{{ "header.title.none" | t }}</h1>
-
-		{% else %}
-
-			<div class="icon">{{ include("./icon/warning.svg") }}</div>
-			<h1>{{ "header.title.some" | t }}</h1>
-
-		{% endif %}
-		<p>
-			{{ "header.updated" | t({date: now | date}) }}
-		</p>
+		<img class="icon" src="{{ gs | statusicon }}" />
+		<h1>{{ gs | globalstatustext | t }}</h1>
+		<p>{{ "header.updated" | t({date: now | date}) }}</p>
 	</div>
 </header>

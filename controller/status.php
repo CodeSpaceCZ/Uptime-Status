@@ -34,8 +34,9 @@ class UptimeStatus {
 		$loader = new \Twig\Loader\FilesystemLoader("../view/");
 		$twig = new \Twig\Environment($loader, $twig_config);
 
-		$twig->addFilter(\Filters\timediffmin());
-		$twig->addFilter(\Filters\isof());
+		$twig->addFilter(\Filters\globalstatus());
+		$twig->addFilter(\Filters\globalstatustext());
+		$twig->addFilter(\Filters\statusicon());
 
 		$locale = new \Locale\Locale($this->cfg("default_language"));
 		$twig->addFilter($locale->t());

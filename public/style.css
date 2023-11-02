@@ -2,12 +2,12 @@
 
 	--border-radius: .35rem;
 
-	--title-color: #fff;
-	--text-color: #fff9;
-	--bg-color: #0f121a;
+	--title-color: 255, 255, 255;
+	--text-color: 177, 177, 177;
+	--bg-color: 15, 18, 26;
 
-	--card-bg-color: #23273191;
-	--card-border-color: #21242d;
+	--card-bg-color: 35, 39, 49;
+	--card-border-color: 33, 36, 45;
 
 	--green-color: 16, 185, 129;
 	--red-color: 248, 113, 113;
@@ -16,11 +16,12 @@
 }
 
 body {
-	color: var(--text-color);
-	background-color: var(--bg-color);
+	color: rgb(var(--text-color));
+	background-color: rgb(var(--bg-color));
 	font-family: Cantarell, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	margin: 0;
+	overflow-x: hidden;
 	line-height: 1.15;
+	margin: 0;
 }
 
 * {
@@ -34,7 +35,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-	color: var(--title-color);
+	color: rgb(var(--title-color));
 }
 
 h3, h4 {
@@ -42,11 +43,11 @@ h3, h4 {
 }
 
 a {
-	color: var(--text-color);
+	color: rgb(var(--text-color));
 }
 
 a:hover {
-	color: var(--title-color);
+	color: rgb(var(--title-color));
 }
 
 
@@ -71,18 +72,6 @@ header::after {
 	z-index: -1;
 }
 
-header.all {
-	--color: var(--green-color);
-}
-
-header.some {
-	--color: var(--yellow-color);
-}
-
-header.none {
-	--color: var(--red-color);
-}
-
 header .icon {
 	color: rgb(var(--color));
 	border-radius: 50%;
@@ -92,10 +81,7 @@ header .icon {
 	position: relative;
 	display: flex;
 	background-image: linear-gradient(-45deg, rgb(var(--color), .1) 0%, rgb(var(--color), .5) 100%);
-}
-
-header .icon svg {
-	filter: drop-shadow(0 0 10px var(--bg-color));
+	filter: drop-shadow(0 0 10px rgb(var(--bg-color)));
 }
 
 header p {
@@ -113,27 +99,23 @@ footer {
 /* GROUP */
 
 .group {
-	background: var(--card-bg-color);
-	border: 1px solid var(--card-border-color);
+	background: rgb(var(--card-bg-color), .5);
+	border: 1px solid rgb(var(--card-border-color));
 	margin: 10px 0;
 	padding: 10px;
 	border-radius: var(--border-radius);
 }
 
 .group .item {
-	overflow: hidden;
+	padding: 10px;
 	border-radius: var(--border-radius);
-}
-
-.group .item > .inner {
-	margin: 10px;
 }
 
 .group .item:hover {
 	background-color: #fff1;
 }
 
-.group > .header > .inner {
+.group > .header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -148,9 +130,6 @@ footer {
 
 .monitor {
 	--color: 150, 150, 150;
-}
-
-.monitor > .inner {
 	display: flex;
 	gap: 7px;
 	flex-direction: column;
@@ -178,50 +157,97 @@ footer {
 
 .heartbeats {
 	display: flex;
-	gap: 5px;
-	flex-direction: column;
-}
-
-.heartbeats .items {
-	display: flex;
-	gap: 2px;
-	border-radius: var(--border-radius);
-	overflow: hidden;
+	gap: 0px;
 	height: 5px;
-	transition: all .3s .5s;
 	opacity: .4;
+	transition: all .3s;
 }
 
-.heartbeats .items > * {
+.heartbeats .tooltip {
+	position: absolute;
+	z-index: 10;
+	background-color: rgb(var(--card-bg-color));
+	border-radius: var(--border-radius);
+	border: 1px solid rgb(var(--card-border-color));
+	top: 100%;
+	left: 50%;
+	margin-top: 5px;
+	margin-left: -90px;
+	width: 180px;
+	box-shadow: 0 0 10px 0 #0005;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.heartbeats .tooltip > * {
+	padding: 15px;
+}
+
+.heartbeats .tooltip .status {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.heartbeats .tooltip .status :nth-child(1) {
+	display: flex;
+	flex-direction: row;
+	gap: 7px;
+	font-weight: 700;
+	color: rgb(var(--title-color));
+}
+
+.heartbeats .tooltip img {
+	max-width: 19px;
+}
+
+.heartbeats .tooltip .date {
+	font-size: .9rem;
+	text-align: center;
+	font-weight: 700;
+	background-color: #fff1;
+	padding: 8px 15px;
+}
+
+.heartbeats .beat {
+	cursor: pointer;
+	position: relative;
 	flex: 1;
 	background-color: rgb(var(--color));
-	border-radius: var(--border-radius);
 }
 
-.heartbeats .time {
-	display: flex;
-	justify-content: space-between;
-	font-size: .9rem;
-	opacity: .7;
-	line-height: 1;
+.heartbeats .beat:last-child {
+	border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
-.monitor:hover .heartbeats .items {
-	height: 25px;
+.heartbeats .beat:first-child {
+	border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.heartbeats .beat:hover {
+	box-shadow: inset 0 0 0 2px rgb(var(--title-color));
+}
+
+.heartbeats .beat:hover .tooltip {
 	opacity: 1;
+}
+
+.monitor:hover .heartbeats {
+	opacity: 1;
+	height: 25px;
 }
 
 
 /* STATUS COLORS */
 
-.monitor.status-1, .monitor .heartbeats .status-1 {
+.status-1 {
 	--color: var(--green-color);
 }
 
-.monitor.status-0, .monitor .heartbeats .status-0 {
+.status-0 {
 	--color: var(--red-color);
 }
 
-.monitor.status-2, .monitor .heartbeats .status-2 {
+.status-2 {
 	--color: var(--yellow-color);
 }

@@ -1,25 +1,15 @@
 {% set status = monitor.last.status %}
 <div class="item monitor status-{{ status }}">
-	<div class="inner">
-		<div class="header">
-			<div class="icon">
-				{% if status == 0 %}
-					{{ include("./icon/error.svg") }}
-				{% elseif status == 1 %}
-					{{ include("./icon/success.svg") }}
-				{% elseif status == 2 %}
-					{{ include("./icon/warning.svg") }}
-				{% endif %}
-			</div>
-			<h4>
-				{{ monitor.name }}
-			</h4>
-			<div class="uptime">
-				{{ "monitor.uptime" | t({pct: (monitor.uptime * 100) | number_format(1, '.')}) | raw }}
-			</div>
+	<div class="header">
+			<img class="icon" src="{{ status | statusicon }}" />
+		<h4>
+			{{ monitor.name }}
+		</h4>
+		<div class="uptime">
+			{{ "monitor.uptime" | t({pct: (monitor.uptime * 100) | number_format(1, '.')}) | raw }}
 		</div>
-		{% if monitor.opt.rich %}
-			{{ include("./heartbeats.twig") }}
-		{% endif %}
 	</div>
+	{% if monitor.opt.rich %}
+		{{ include("./heartbeats.twig") }}
+	{% endif %}
 </div>

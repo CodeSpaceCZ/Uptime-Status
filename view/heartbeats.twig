@@ -1,11 +1,24 @@
 <div class="heartbeats">
-	<div class="items">
-		{% for heartbeat in monitor.heartbeats %}
-			<div class="status-{{ heartbeat.status }}"></div>
-		{% endfor %}	
-	</div>
-	<div class="time">
-		<div>{{ "heartbeats.ago" | t({minutes: (monitor.heartbeats | first).time | timediffmin((monitor.heartbeats | last).time)}) }}</div>
-		<div>{{ "heartbeats.now" | t }}</div>
-	</div>
+	{% for heartbeat in monitor.heartbeats %}
+		<div class="beat status-{{ heartbeat.status }}">
+			<div class="tooltip">
+				<div class="status">
+					<div>
+						<img src="{{ heartbeat.status | statusicon }}" />
+						<span>
+							{{ ("status." ~ heartbeat.status) | t }}
+						</span>
+					</div>
+					{% if heartbeat.ping %}
+					<div>
+						Ping: {{ heartbeat.ping }}ms
+					</div>
+					{% endif %}
+				</div>
+				<div class="date">
+					{{ heartbeat.time | date }}
+				</div>
+			</div>
+		</div>
+	{% endfor %}
 </div>
