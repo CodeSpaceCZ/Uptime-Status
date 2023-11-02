@@ -1,5 +1,10 @@
 {
     "require": {
         "twig/twig": "^3.0"
-    }
+    },
+	"scripts": {
+		"dev" : [
+			"php -S localhost:8000 -t public"
+		]
+	}
 }

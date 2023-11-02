@@ -58,4 +58,4 @@ Once you've completed these steps, you're all set to start using Uptime Status.
 
 ## Development
 
-If you're interested in developing Uptime Status or testing it on your local device, make sure you have PHP installed, and run the `./dev.sh` script to set up a local PHP server.
+If you're interested in developing Uptime Status or testing it on your local device, make sure you have PHP installed, and run `composer run dev` to set up a local PHP server.
