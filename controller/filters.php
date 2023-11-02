@@ -26,7 +26,8 @@ function statusicon() {
 		$icons = [
 			0 => "error",
 			1 => "success",
-			2 => "warning"
+			2 => "warning",
+			3 => "maintenance"
 		];
 		return "/icon/{$icons[$status]}.svg";
 	});

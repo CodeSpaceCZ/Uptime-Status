@@ -7,6 +7,7 @@
 	"status.1": "V pořádku",
 	"status.0": "Výpadek",
 	"status.2": "Problém",
+	"status.3": "Údržba",
 	"dateformat": "j. m. Y G:i",
 	"footer.poweredby": "Poháněno projektem <b><a href=\"{{link}}\" target=\"_blank\">Uptime Status</a></b>"
 }

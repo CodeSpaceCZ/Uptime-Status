@@ -7,6 +7,7 @@
 	"status.1": "Operational",
 	"status.0": "Downtime",
 	"status.2": "Problem",
+	"status.3": "Maintenance",
 	"dateformat": "M j, Y, g:i a",
 	"footer.poweredby": "Powered by <b><a href=\"{{link}}\" target=\"_blank\">Uptime Status</a></b>"
 }
