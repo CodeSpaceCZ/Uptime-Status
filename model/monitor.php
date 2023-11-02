@@ -26,10 +26,16 @@ class Monitor {
 		$opts = $s->cfg("monitor_options") ?? [];
 		$opt = $opts[$id] ?? [];
 
+		$heartbeats = [];
+		foreach ($heartbeat["heartbeatList"][$id] as $beat) {
+			$beat["time"] = strtotime($beat["time"]);
+			array_push($heartbeats, $beat);
+		}
+
 		return new Monitor(
 			$oldMonitor["name"],
 			$heartbeat["uptimeList"][$id . "_24"],
-			$heartbeat["heartbeatList"][$id],
+			$heartbeats,
 			$opt
 		);
 	}
