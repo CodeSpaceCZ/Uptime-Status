@@ -1,4 +1,4 @@
-<img src="./public/icon.webp" width="120px" alt="Uptime Status logo">
+<img src="./public/icon/success.webp" width="120px" alt="Uptime Status logo">
 
 # Uptime Status
 

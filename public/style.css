@@ -9,10 +9,10 @@
 	--card-bg-color: 35, 39, 49;
 	--card-border-color: 33, 36, 45;
 
-	--green-color: 16, 185, 129;
-	--red-color: 248, 113, 113;
-	--yellow-color: 255, 187, 109;
-	--blue-color: 149, 117, 205;
+	--error-color: 248, 113, 113;
+	--success-color: 16, 185, 129;
+	--warning-color: 255, 187, 109;
+	--maintenance-color: 149, 117, 205;
 
 }
 
@@ -240,18 +240,18 @@ footer {
 
 /* STATUS COLORS */
 
-.status-1 {
-	--color: var(--green-color);
+.status-0 {
+	--color: var(--error-color);
 }
 
-.status-0 {
-	--color: var(--red-color);
+.status-1 {
+	--color: var(--success-color);
 }
 
 .status-2 {
-	--color: var(--yellow-color);
+	--color: var(--warning-color);
 }
 
 .status-3 {
-	--color: var(--blue-color);
+	--color: var(--maintenance-color);
 }

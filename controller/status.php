@@ -36,6 +36,7 @@ class UptimeStatus {
 
 		$twig->addFilter(\Filters\globalstatus());
 		$twig->addFilter(\Filters\statusicon());
+		$twig->addFilter(\Filters\statuscolor());
 
 		$locale = new \Locale\Locale($this->cfg("default_language"));
 		$twig->addFilter($locale->t());

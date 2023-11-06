@@ -1,3 +1,7 @@
+{% set gs = stats | globalstatus(total) %}
+{% set icon = gs | statusicon("webp") %}
+{% set update = "header.updated" | t({date: now | date}) %}
+{% set title = ("header.title." ~ gs) | t %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -5,7 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>{{ page.title }}</title>
 		<link rel="stylesheet" href="/style.css">
-		<link rel="icon" href="/icon.webp" type="image/webp">
+		{{ include("seo.twig") }}
 	</head>
 	<body>
 		{{ include("./header.twig") }}
