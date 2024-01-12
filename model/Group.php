@@ -1,6 +1,6 @@
-<?php
+<?php namespace UptimeStatus\Model;
 
-require_once(__DIR__ . "/monitor.php");
+use UptimeStatus\Status;
 
 class Group {
 
@@ -22,7 +22,7 @@ class Group {
 		return $this->stats;
 	}
 
-	public static function convert(UptimeStatus $s, array $oldGroup, array $heartbeat): Group {
+	public static function convert(Status $s, array $oldGroup, array $heartbeat): Group {
 		$group = new Group($oldGroup["name"]);
 		foreach ($oldGroup["monitorList"] as $oldMonitor) {
 			$group->add_monitor(Monitor::convert($s, $oldMonitor, $heartbeat));

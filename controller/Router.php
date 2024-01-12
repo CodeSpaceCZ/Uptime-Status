@@ -1,13 +1,11 @@
-<?php
-
-require(__DIR__ . "/status.php");
+<?php namespace UptimeStatus;
 
 class Router {
 
-	private UptimeStatus $status;
+	private Status $status;
 
 	public function __construct($config) {
-		$this->status = new UptimeStatus($config);
+		$this->status = new Status($config);
 	}
 
 	public function get_path(): string {

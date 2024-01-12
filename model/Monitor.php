@@ -1,4 +1,6 @@
-<?php
+<?php namespace UptimeStatus\Model;
+
+use UptimeStatus\Status;
 
 class Monitor {
 
@@ -20,7 +22,7 @@ class Monitor {
 		return $this->last["status"] ?? 0;
 	}
 
-	public static function convert(UptimeStatus $s, array $oldMonitor, array $heartbeat): Monitor {
+	public static function convert(Status $s, array $oldMonitor, array $heartbeat): Monitor {
 
 		$id = $oldMonitor["id"];
 		$opts = $s->cfg("monitor_options") ?? [];

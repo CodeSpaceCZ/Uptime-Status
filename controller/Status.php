@@ -1,11 +1,8 @@
-<?php
+<?php namespace UptimeStatus;
 
-require_once("../vendor/autoload.php");
-require_once("../model/page.php");
-require_once(__DIR__ . "/filters.php");
-require_once(__DIR__ . "/locale.php");
+use UptimeStatus\Model\Page;
 
-class UptimeStatus {
+class Status {
 
 	private array $config;
 
@@ -34,11 +31,11 @@ class UptimeStatus {
 		$loader = new \Twig\Loader\FilesystemLoader("../view/");
 		$twig = new \Twig\Environment($loader, $twig_config);
 
-		$twig->addFilter(\Filters\globalstatus());
-		$twig->addFilter(\Filters\statusicon());
-		$twig->addFilter(\Filters\statuscolor());
+		$twig->addFilter(Filters::globalstatus());
+		$twig->addFilter(Filters::statusicon());
+		$twig->addFilter(Filters::statuscolor());
 
-		$locale = new \Locale\Locale($this->cfg("default_language"));
+		$locale = new Locale($this->cfg("default_language"));
 		$twig->addFilter($locale->t());
 
 		$ext = $twig->getExtension(\Twig\Extension\CoreExtension::class);

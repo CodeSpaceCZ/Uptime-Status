@@ -1,4 +1,8 @@
 <?php
 
+require("../vendor/autoload.php");
+require("../config.inc.php");
 
-require("../controller/main.php");
+$router = new UptimeStatus\Router($config);
+
+$router->render();

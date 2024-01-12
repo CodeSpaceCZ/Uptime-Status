@@ -1,4 +1,4 @@
-<?php namespace Locale;
+<?php namespace UptimeStatus;
 
 class Locale {
 

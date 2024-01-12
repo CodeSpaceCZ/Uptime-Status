@@ -1,6 +1,6 @@
-<?php
+<?php namespace UptimeStatus\Model;
 
-require_once(__DIR__ . "/group.php");
+use UptimeStatus\Status;
 
 class Page {
 
@@ -32,7 +32,7 @@ class Page {
 		];
 	}
 
-	public static function get(UptimeStatus $s, string $page): ?Page {
+	public static function get(Status $s, string $page): ?Page {
 
 		$url = $s->cfg("uptime_kuma_url");
 		$urls = [
