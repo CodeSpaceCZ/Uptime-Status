@@ -1,4 +1,7 @@
 {
+	"name": "codespace/uptime-status",
+	"description": "Modern and simple alternative public status page for Uptime Kuma",
+	"license": "GPL-3.0-or-later",
     "require": {
         "twig/twig": "^3.0"
     },
