@@ -9,7 +9,7 @@
 			{{ "monitor.uptime" | t({pct: (monitor.uptime * 100) | number_format(1, '.')}) | raw }}
 		</div>
 	</div>
-	{% if monitor.opt.rich %}
+	{% if monitor.opt.heartbeats %}
 		{{ include("./heartbeats.twig") }}
 	{% endif %}
 </div>

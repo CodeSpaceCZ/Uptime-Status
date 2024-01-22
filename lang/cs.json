@@ -10,6 +10,6 @@
 	"status.2": "Problém",
 	"status.3": "Údržba",
 	"heartbeat.ping": "Odezva: {{ping}}ms",
-	"dateformat": "j. m. Y G:i",
+	"dateformat": "j. n. Y G:i",
 	"footer.poweredby": "Poháněno projektem <b><a href=\"{{link}}\" target=\"_blank\">Uptime Status</a></b>"
 }

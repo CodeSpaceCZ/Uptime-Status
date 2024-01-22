@@ -4,29 +4,29 @@ use UptimeStatus\Model\Page;
 
 class Status {
 
-	private array $config;
+	readonly int $backend_id;
 
-	public function __construct(array $config) {
-		$this->config = $config;
+	readonly string $slug;
+
+	public ?Page $page = null;
+
+	public function __construct(int $backend_id, string $slug) {
+		$this->backend_id = $backend_id;
+		$this->slug = $slug;
 	}
 
-	public function cfg($name) {
-		if(array_key_exists($name, $this->config)) {
-			return $this->config[$name];
-		}
-		return null;
+	public function get_page(): ?Page {
+		$this->page = Page::get($this, $this->backend_id, $this->slug);
+		return $this->page;
 	}
 
-	public function get_page(string $page): ?Page {
-		return Page::get($this, $page);
-	}
+	public function display(): void {
 
-	public function display(Page $page) {
-
-		$data = $page->export();
+		if ($this->page == null) return;
+		$data = $this->page->export();
 
 		$twig_config = [];
-		if ($this->cfg("enable_twig_cache")) $twig_config["cache"] = "../cache/twig/";
+		if (Config::get("enable_twig_cache")) $twig_config["cache"] = "../cache/twig/";
 
 		$loader = new \Twig\Loader\FilesystemLoader("../view/");
 		$twig = new \Twig\Environment($loader, $twig_config);
@@ -35,12 +35,12 @@ class Status {
 		$twig->addFilter(Filters::statusicon());
 		$twig->addFilter(Filters::statuscolor());
 
-		$locale = new Locale($this->cfg("default_language"));
+		$locale = new Locale(Config::get("default_language"));
 		$twig->addFilter($locale->t());
 
 		$ext = $twig->getExtension(\Twig\Extension\CoreExtension::class);
 		$ext->setDateFormat($locale->get("dateformat"));
-		$ext->setTimezone($this->cfg("timezone"));
+		$ext->setTimezone(Config::get("timezone"));
 
 		echo $twig->render('index.twig', $data);
 

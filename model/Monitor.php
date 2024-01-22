@@ -1,5 +1,6 @@
 <?php namespace UptimeStatus\Model;
 
+use UptimeStatus\Config;
 use UptimeStatus\Status;
 
 class Monitor {
@@ -25,8 +26,10 @@ class Monitor {
 	public static function convert(Status $s, array $oldMonitor, array $heartbeat): Monitor {
 
 		$id = $oldMonitor["id"];
-		$opts = $s->cfg("monitor_options") ?? [];
-		$opt = $opts[$id] ?? [];
+		$opts = Config::get("monitor_options", []);
+		$bid = $s->backend_id;
+		$page = $s->slug;
+		$opt = $opts["$page/$bid:$id"] ?? $opts["$page/$id"] ?? $opts["$bid:$id"] ?? $opts[$id] ?? [];
 
 		$heartbeats = [];
 		foreach ($heartbeat["heartbeatList"][$id] as $beat) {

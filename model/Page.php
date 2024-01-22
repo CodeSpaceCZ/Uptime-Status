@@ -1,5 +1,6 @@
 <?php namespace UptimeStatus\Model;
 
+use UptimeStatus\Config;
 use UptimeStatus\Status;
 
 class Page {
@@ -32,12 +33,12 @@ class Page {
 		];
 	}
 
-	public static function get(Status $s, string $page): ?Page {
+	public static function get(Status $s, int $backend_id, string $page): ?Page {
 
-		$url = $s->cfg("uptime_kuma_url");
+		$backend = Config::get("backends")[$backend_id];
 		$urls = [
-			$url . "/api/status-page/" . $page,
-			$url . "/api/status-page/heartbeat/" . $page
+			$backend . "/api/status-page/" . $page,
+			$backend . "/api/status-page/heartbeat/" . $page
 		];
 
 		[$oldPage, $heartbeat] = Page::download($urls);
@@ -60,6 +61,7 @@ class Page {
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_HEADER, 0);
+			curl_setopt($ch, CURLOPT_TIMEOUT, 5);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_multi_add_handle($mh, $ch);
 			array_push($chs, $ch);

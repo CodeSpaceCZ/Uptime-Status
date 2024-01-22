@@ -10,14 +10,14 @@ class Filters {
 			return 2;
 		});
 	}
-	
+
 	public static function statusicon() {
 		return new \Twig\TwigFilter('statusicon', function (int $status, string $suffix = "svg") {
 			$icons = ["error", "success", "warning", "maintenance"];
 			return "/icon/{$icons[$status]}.$suffix";
 		});
 	}
-	
+
 	public static function statuscolor() {
 		return new \Twig\TwigFilter('statuscolor', function (int $status) {
 			return ["#F87171", "#10B981", "#FFBB6D", "#9575cd"][$status];
