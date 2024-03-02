@@ -17,7 +17,7 @@ class Locale {
 	}
 
 	private function load_lang(string $lang) {
-		$path = "../lang/" . basename("$lang.json");
+		$path = dirname(__DIR__) . "/lang/" . basename("$lang.json");
 		if (is_file($path)) {
 			$content = file_get_contents($path);
 			if (!$content) return;

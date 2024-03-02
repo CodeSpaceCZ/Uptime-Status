@@ -28,7 +28,7 @@ class Status {
 		$twig_config = [];
 		if (Config::get("enable_twig_cache")) $twig_config["cache"] = "../cache/twig/";
 
-		$loader = new \Twig\Loader\FilesystemLoader("../view/");
+		$loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__) . "/view/");
 		$twig = new \Twig\Environment($loader, $twig_config);
 
 		$twig->addFilter(Filters::globalstatus());
