@@ -147,6 +147,7 @@ footer {
 }
 
 .monitor .icon {
+	width: 100%;
 	display: flex;
 }
 
