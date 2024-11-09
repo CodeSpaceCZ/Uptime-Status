@@ -24,7 +24,7 @@ $config = [
 	/**
 	 * Monitor options
 	 * - the key must be in one of formats below (MON_ID = monitor ID, KUMA_ID = backend ID, PAGE = page)
-	 * 	 - MON_ID
+	 *   - MON_ID
 	 *   - KUMA_ID:MON_ID
 	 *   - PAGE/MON_ID
 	 *   - PAGE/KUMA_ID:MON_ID

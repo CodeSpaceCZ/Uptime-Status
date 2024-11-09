@@ -42,11 +42,11 @@ Setting up Uptime Status is straightforward. Follow these steps to get started:
 
 2. **Retrieve project's files**:
 
-	Copy the `public` directory from `vendor/codespace/uptime-status` to the directory where you ran the `composer` command. You can also copy the `config.inc.php` template configuration file there.
+	Copy the `public` directory from `vendor/codespace/uptime-status` to the directory where you ran the `composer` command. You can also copy the config directory with `config.inc.php` template configuration file there.
 
 	```sh
 	cp -r vendor/codespace/uptime-status/public .
-	cp vendor/codespace/uptime-status/config.inc.php .
+	cp -r vendor/codespace/uptime-status/config .
 	```
 
 3. **Copy the Files to Your Web Server**:
@@ -56,7 +56,7 @@ Setting up Uptime Status is straightforward. Follow these steps to get started:
 4. **Edit the Configuration File**:
 
 	Don't forget to edit the `config.inc.php` file and set your Uptime Kuma's URL and status page.
-	
+
 Once you've completed these steps, you're all set to start using Uptime Status.
 
 ## Development
