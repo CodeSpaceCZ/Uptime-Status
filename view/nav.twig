@@ -1,0 +1,26 @@
+<nav>
+	<div class="inner">
+		<div class="logo">
+			{% if nav.logo %}
+			<img src="{{ nav.logo }}" alt="Logo">
+			{% endif %}
+			{% if nav.title %}
+			<div>{{ nav.title }}</div>
+			{% endif %}
+		</div>
+		<div class="items">
+			{% for text, link in nav.links %}
+			<a href="{{ link }}">
+				{{ text }}
+			</a>
+			{% endfor %}
+		</div>
+		<div class="button">
+			{% if nav.button %}
+			<a href="{{ nav.button.link }}" class="active">
+				{{ nav.button.text }}
+			</a>
+			{% endif %}
+		</div>
+	</div>
+</nav>

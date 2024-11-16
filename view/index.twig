@@ -12,6 +12,9 @@
 		{{ include("seo.twig") }}
 	</head>
 	<body>
+		{% if nav %}
+		{{ include("./nav.twig") }}
+		{% endif %}
 		{{ include("./header.twig") }}
 		<section>
 			<div class="inner">

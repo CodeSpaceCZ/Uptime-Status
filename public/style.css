@@ -58,6 +58,76 @@ a:hover {
 }
 
 
+/* NAV */
+
+nav {
+	max-width: var(--site-width);
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+nav > .inner {
+	padding: 10px 0 8px;
+	border-bottom: 1px solid rgb(var(--card-border-color));
+	display: grid;
+	grid-template-columns: 1fr max-content 1fr;
+	align-items: center;
+	gap: 10px;
+}
+
+nav .logo {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: rgb(var(--title-color));
+	font-weight: 700;
+}
+
+nav .logo img {
+	max-height: 1.4rem;
+}
+
+nav .items {
+	display: flex;
+	gap: 5px;
+}
+
+nav .button {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+nav :is(.items, .button) a {
+	padding: 7px 10px;
+	border-radius: var(--border-radius);
+	text-decoration: none;
+}
+
+nav :is(.items, .button) a.active {
+	background-color: #fff1;
+}
+
+nav :is(.items, .button) a:hover {
+	background-color: #fff2;
+}
+
+@media screen and (max-width: 600px) {
+	nav > .inner {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding-top: 15px;
+	}
+	nav .logo {
+		width: 100%;
+		justify-content: center;
+	}
+	nav :is(.items, .button) {
+		display: inline-flex;
+	}
+}
+
+
 /* HEADER */
 
 header {
