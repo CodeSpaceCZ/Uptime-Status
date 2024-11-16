@@ -26,6 +26,7 @@ class Page {
 
 	public function export(): array {
 		return [
+			"nav" => Config::get("nav"),
 			"page" => $this->page,
 			"stats" => $this->stats,
 			"total" => $this->total,

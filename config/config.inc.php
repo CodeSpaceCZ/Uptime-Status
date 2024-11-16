@@ -50,6 +50,26 @@ $config = [
 	/**
 	 * Timezone of displayed date
 	 */
-	"timezone" => "Etc/UTC"
+	"timezone" => "Etc/UTC",
+
+	/**
+	 * Status page navbar (optional)
+	 */
+	"nav" => [
+		// Logo image URL (optional)
+		"logo" => "https://example.com/logo.png",
+		// Navbar title text (optional)
+		"title" => "Title",
+		// Navbar links
+		"links" => [
+			"Status" => "/",
+			"Second page" => "/second"
+		],
+		// Button on the right side (optional)
+		"button" => [
+			"text" => "Contact",
+			"link" => "mailto:support@example.com"
+		]
+	]
 
 ];
