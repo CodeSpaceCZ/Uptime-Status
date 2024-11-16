@@ -1,0 +1,15 @@
+{
+	"header.title.1": "Tous les services sont en ligne",
+	"header.title.0": "Tous les services sont hors ligne",
+	"header.title.2": "Certains services sont hors ligne",
+	"header.title.3": "En maintenance",
+	"header.updated": "Dernière mise à jour le {{date}}.",
+	"monitor.uptime": "<b>{{pct}}%</b> de disponibilité",
+	"status.1": "Opérationnel",
+	"status.0": "Hors ligne",
+	"status.2": "Problème",
+	"status.3": "Maintenance",
+	"heartbeat.ping": "Ping : {{ping}}ms",
+	"dateformat": "j M Y, g:i a",
+	"footer.poweredby": "Propulsé par <b><a href=\"{{link}}\" target=\"_blank\">Uptime Status</a></b>"
+}
