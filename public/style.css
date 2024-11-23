@@ -15,6 +15,7 @@
 	--maintenance-color: 149, 117, 205;
 
 	--site-width: 750px;
+	--site-padding: 15px;
 
 }
 
@@ -38,7 +39,7 @@ html, body {
 :is(header, section, footer) > .inner {
 	max-width: var(--site-width);
 	margin: 40px auto;
-	padding: 0 10px;
+	padding: 0 var(--site-padding);
 }
 
 h1, h2, h3, h4 {
@@ -60,27 +61,34 @@ a:hover {
 
 /* NAV */
 
+#menu-toggle {
+	display: none;
+}
+
 nav {
 	max-width: var(--site-width);
 	margin: 0 auto;
-	padding: 0 10px;
+	padding: 0 var(--site-padding);
 }
 
 nav > .inner {
-	padding: 10px 0 8px;
+	padding: 10px 0 9px;
 	border-bottom: 1px solid rgb(var(--card-border-color));
 	display: grid;
 	grid-template-columns: 1fr max-content 1fr;
+	grid-template-areas: "logo items button";
 	align-items: center;
-	gap: 10px;
+	gap: 5px;
 }
 
 nav .logo {
+	grid-area: logo;
 	display: flex;
 	align-items: center;
-	gap: 10px;
+	gap: 7px;
 	color: rgb(var(--title-color));
 	font-weight: 700;
+	text-decoration: none;
 }
 
 nav .logo img {
@@ -88,11 +96,27 @@ nav .logo img {
 }
 
 nav .items {
+	grid-area: items;
 	display: flex;
 	gap: 5px;
 }
 
+nav .menu {
+	display: none;
+	grid-area: menu;
+	cursor: pointer;
+	margin: -15px;
+	padding: 15px;
+}
+
+nav .menu svg {
+	transition: transform .15s;
+	width: 24px;
+	height: 24px;
+}
+
 nav .button {
+	grid-area: button;
 	display: flex;
 	flex-direction: row-reverse;
 }
@@ -112,18 +136,33 @@ nav :is(.items, .button) a:hover {
 }
 
 @media screen and (max-width: 600px) {
+	nav {
+		padding: 0;
+	}
 	nav > .inner {
+		grid-template-columns: 1fr max-content max-content;
+		grid-template-areas: "logo button menu" "items items items";
+		padding: 10px var(--site-padding);
+		transition: height .2s;
+		height: 52.3px;
+		overflow-y: clip;
+		gap: 9px;
+		interpolate-size: allow-keywords;
+	}
+	nav .menu {
 		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		padding-top: 15px;
 	}
-	nav .logo {
-		width: 100%;
-		justify-content: center;
+	nav .items {
+		border-top: 1px solid rgb(var(--card-border-color));
+		padding-top: 8px;
+		flex-direction: column;
+		align-items: start;
 	}
-	nav :is(.items, .button) {
-		display: inline-flex;
+	#menu-toggle:checked + nav > .inner {
+		height: auto;
+	}
+	#menu-toggle:checked + nav .menu svg {
+		transform: rotateX(180deg);
 	}
 }
 
