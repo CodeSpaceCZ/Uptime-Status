@@ -8,10 +8,11 @@ class Locale {
 
 		$this->load_lang($defaultLang);
 
-		$lang = explode(";", $_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
-
-		foreach (array_reverse(explode(",", $lang)) as $l) {
-			$this->load_lang(substr($l, 0, 2));
+		if (key_exists("HTTP_ACCEPT_LANGUAGE", $_SERVER)) {
+			$lang = explode(";", $_SERVER["HTTP_ACCEPT_LANGUAGE"])[0];
+			foreach (array_reverse(explode(",", $lang)) as $l) {
+				$this->load_lang(substr($l, 0, 2));
+			}
 		}
 
 	}

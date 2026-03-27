@@ -9,7 +9,7 @@
 							{{ ("status." ~ heartbeat.status) | t }}
 						</span>
 					</div>
-					{% if heartbeat.ping %}
+					{% if heartbeat.ping is not null %}
 					<div>
 						{{ "heartbeat.ping" | t({ping: heartbeat.ping}) }}
 					</div>
