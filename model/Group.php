@@ -12,20 +12,20 @@ class Group {
 		$this->name = $name;
 	}
 
-	public function add_monitor(Monitor $monitor) {
+	public function addMonitor(Monitor $monitor) {
 		array_push($this->monitors, $monitor);
-		$status = $monitor->get_status();
+		$status = $monitor->getStatus();
 		$this->stats[$status]++;
 	}
 
-	public function get_stats(): array {
+	public function getStats(): array {
 		return $this->stats;
 	}
 
 	public static function convert(Status $s, array $oldGroup, array $heartbeat): Group {
 		$group = new Group($oldGroup["name"]);
 		foreach ($oldGroup["monitorList"] as $oldMonitor) {
-			$group->add_monitor(Monitor::convert($s, $oldMonitor, $heartbeat));
+			$group->addMonitor(Monitor::convert($s, $oldMonitor, $heartbeat));
 		}
 		return $group;
 	}

@@ -6,18 +6,18 @@ class Locale {
 
 	public function __construct(string $defaultLang) {
 
-		$this->load_lang($defaultLang);
+		$this->loadLanguage($defaultLang);
 
 		if (key_exists("HTTP_ACCEPT_LANGUAGE", $_SERVER)) {
 			$lang = explode(";", $_SERVER["HTTP_ACCEPT_LANGUAGE"])[0];
 			foreach (array_reverse(explode(",", $lang)) as $l) {
-				$this->load_lang(substr($l, 0, 2));
+				$this->loadLanguage(substr($l, 0, 2));
 			}
 		}
 
 	}
 
-	private function load_lang(string $lang) {
+	private function loadLanguage(string $lang) {
 		$path = dirname(__DIR__) . "/lang/" . basename("$lang.json");
 		if (is_file($path)) {
 			$content = file_get_contents($path);
@@ -37,7 +37,7 @@ class Locale {
 		return $msg;
 	}
 
-	public function t() {
+	public function translate() {
 		return new \Twig\TwigFilter('t', function ($msg, $data = []) {
 			return $this->get($msg, $data);
 		});

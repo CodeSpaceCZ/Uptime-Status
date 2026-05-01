@@ -4,19 +4,19 @@ use UptimeStatus\Model\Page;
 
 class Status {
 
-	readonly int $backend_id;
+	readonly int $backendId;
 
 	readonly string $slug;
 
 	public ?Page $page = null;
 
 	public function __construct(int $backend_id, string $slug) {
-		$this->backend_id = $backend_id;
+		$this->backendId = $backend_id;
 		$this->slug = $slug;
 	}
 
-	public function get_page(): ?Page {
-		$this->page = Page::get($this, $this->backend_id, $this->slug);
+	public function getPage(): ?Page {
+		$this->page = Page::get($this, $this->backendId, $this->slug);
 		return $this->page;
 	}
 
@@ -25,18 +25,18 @@ class Status {
 		if ($this->page == null) return;
 		$data = $this->page->export();
 
-		$twig_config = [];
-		if (Config::get("enable_twig_cache")) $twig_config["cache"] = "../cache/twig/";
+		$twigConfig = [];
+		if (Config::get("enable_twig_cache")) $twigConfig["cache"] = "../cache/twig/";
 
 		$loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__) . "/view/");
-		$twig = new \Twig\Environment($loader, $twig_config);
+		$twig = new \Twig\Environment($loader, $twigConfig);
 
-		$twig->addFilter(Filters::globalstatus());
-		$twig->addFilter(Filters::statusicon());
-		$twig->addFilter(Filters::statuscolor());
+		$twig->addFilter(Filters::globalStatus());
+		$twig->addFilter(Filters::statusIcon());
+		$twig->addFilter(Filters::statusColor());
 
 		$locale = new Locale(Config::get("default_language"));
-		$twig->addFilter($locale->t());
+		$twig->addFilter($locale->translate());
 
 		$ext = $twig->getExtension(\Twig\Extension\CoreExtension::class);
 		$ext->setDateFormat($locale->get("dateformat"));

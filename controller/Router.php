@@ -2,12 +2,12 @@
 
 class Router {
 
-	public function get_path(): string {
+	public function getPath(): string {
 		$url = $_SERVER["REQUEST_URI"];
-		$parsed_url = parse_url($url);
+		$parsedUrl = parse_url($url);
 		$path = "";
-		if (isset($parsed_url["path"])) {
-			$path = substr($parsed_url["path"], 1);
+		if (isset($parsedUrl["path"])) {
+			$path = substr($parsedUrl["path"], 1);
 		}
 		if ($path == "" && isset($_GET["q"])) {
 			$path = "{$_GET["q"]}";
@@ -15,7 +15,7 @@ class Router {
 		return $path;
 	}
 
-	public function get_page($path): string {
+	public function getPage($path): string {
 		$pages = Config::get("pages");
 		$slugs = array_keys($pages);
 		foreach ($slugs as $page) {
@@ -27,18 +27,18 @@ class Router {
 	}
 
 	public function render() {
-	
-		$path = $this->get_path();
-		$slug = $this->get_page($path);
 
-		$backend_ids = Config::get("pages")[$slug];
+		$path = $this->getPath();
+		$slug = $this->getPage($path);
 
-		if (!is_array($backend_ids)) $backend_ids = [$backend_ids];
+		$backendIds = Config::get("pages")[$slug];
+
+		if (!is_array($backendIds)) $backendIds = [$backendIds];
 
 		$status = null;
-		foreach ($backend_ids as $bid) {
+		foreach ($backendIds as $bid) {
 			$status = new Status($bid, $slug);
-			$page = $status->get_page();
+			$page = $status->getPage();
 			if ($page) {
 				$status->display();
 				return;

@@ -19,7 +19,7 @@ class Monitor {
 		$this->opt = $opt;
 	}
 
-	public function get_status() {
+	public function getStatus() {
 		return $this->last["status"] ?? 0;
 	}
 
@@ -27,7 +27,7 @@ class Monitor {
 
 		$id = $oldMonitor["id"];
 		$opts = Config::get("monitor_options", []);
-		$bid = $s->backend_id;
+		$bid = $s->backendId;
 		$page = $s->slug;
 		$opt = $opts["$page/$bid:$id"] ?? $opts["$page/$id"] ?? $opts["$bid:$id"] ?? $opts[$id] ?? [];
 

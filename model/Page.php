@@ -14,9 +14,9 @@ class Page {
 		$this->page = $page;
 	}
 
-	public function add_group(Group $group) {
+	public function addGroup(Group $group) {
 		array_push($this->groups, $group);
-		$stats = $group->get_stats();
+		$stats = $group->getStats();
 		for ($i = 0; $i < count($this->stats); $i++) {
 			$count = $stats[$i];
 			$this->stats[$i] += $count;
@@ -34,12 +34,12 @@ class Page {
 		];
 	}
 
-	public static function get(Status $s, int $backend_id, string $page): ?Page {
+	public static function get(Status $s, int $backendId, string $page): ?Page {
 
-		$backend = Config::get("backends")[$backend_id];
+		$backend = Config::get("backends")[$backendId];
 		$urls = [
-			$backend . "/api/status-page/" . $page,
-			$backend . "/api/status-page/heartbeat/" . $page
+			"$backend/api/status-page/$page",
+			"$backend/api/status-page/heartbeat/$page"
 		];
 
 		[$oldPage, $heartbeat] = Page::download($urls);
@@ -49,7 +49,7 @@ class Page {
 
 		$page = new Page($oldPage["config"]);
 		foreach ($oldPage["publicGroupList"] as $oldGroup) {
-			$page->add_group(Group::convert($s, $oldGroup, $heartbeat));
+			$page->addGroup(Group::convert($s, $oldGroup, $heartbeat));
 		}
 		return $page;
 
